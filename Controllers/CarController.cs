@@ -1,4 +1,5 @@
-﻿using WebApiDapper.Models;
+﻿using WebApiDapper.ApiResponse;
+using WebApiDapper.Models;
 using WebApiDapper.Services;
 
 namespace WebApiDapper.Controllers;
@@ -11,14 +12,14 @@ using Microsoft.AspNetCore.Mvc;
 public class CarController(IAllServices<Car> carServices) : ControllerBase
 {
     [HttpPost]
-    public bool Create(Car car) => carServices.Create(car);
+    public Response<bool> Create(Car car) => carServices.Create(car);
     [HttpGet]
-    public List<Car> GetAll() => carServices.GetAll();
+    public Response<List<Car>> GetAll() => carServices.GetAll();
     [HttpGet("/get-By-Id-Car")]
-    public Car GetById(int id) => carServices.GetById(id);
+    public Response<Car> GetById(int id) => carServices.GetById(id);
     [HttpPut]
-    public bool Update(Car car) => carServices.Update(car);
+    public  Response<bool>  Update(Car car) => carServices.Update(car);
     [HttpDelete]
-    public bool Delete(int id) => carServices.Delete(id);
+    public  Response<bool>  Delete(int id) => carServices.Delete(id);
 }
 

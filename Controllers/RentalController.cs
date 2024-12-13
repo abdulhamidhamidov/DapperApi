@@ -1,4 +1,5 @@
-﻿using WebApiDapper.Models;
+﻿using WebApiDapper.ApiResponse;
+using WebApiDapper.Models;
 using WebApiDapper.Services;
 
 namespace WebApiDapper.Controllers;
@@ -11,13 +12,13 @@ using Microsoft.AspNetCore.Mvc;
 public class RentalController(IAllServices<Rental> retalService) : ControllerBase
 {
     [HttpPost]
-    public bool Create(Rental rental) => retalService.Create(rental);
+    public Response<bool> Create(Rental rental) => retalService.Create(rental);
     [HttpGet("/get-All")]
-    public List<Rental> GetAll() => retalService.GetAll();
+    public Response<List<Rental>> GetAll() => retalService.GetAll();
     [HttpGet("/get-By-Id")]
-    public Rental GetById(int id) =>retalService.GetById(id);
+    public Response<Rental> GetById(int id) =>retalService.GetById(id);
     [HttpPut]
-    public bool Update(Rental rental) => retalService.Update(rental);
+    public Response<bool> Update(Rental rental) => retalService.Update(rental);
     [HttpDelete]
-    public bool Delete(int id) => retalService.Delete(id);
+    public Response<bool> Delete(int id) => retalService.Delete(id);
 }

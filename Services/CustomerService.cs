@@ -1,4 +1,6 @@
-﻿using Dapper;
+﻿using System.Net;
+using Dapper;
+using WebApiDapper.ApiResponse;
 using WebApiDapper.DataConText;
 using WebApiDapper.Models;
 
@@ -6,43 +8,61 @@ namespace WebApiDapper.Services;
 
 public class CustomerService(DapperConText dapperConText): IAllServices<Customer>
 {
-    public bool Create(Customer t)
+    public Response<bool> Create(Customer t)
     {
         using  var connection = dapperConText.Connection();
         var sql = "insert into Customers(fullname, phone, email) values (@FullName, @Phone, @Email);";
         var res = connection.Execute(sql,t);
-        return res > 0;
+        if (res == 0)
+        {
+            return new Response<bool>(HttpStatusCode.InternalServerError,"Student not found");
+        }
+
+        return new Response<bool>(HttpStatusCode.Created, "Studnet successfully created");
     }
 
-    public List<Customer> GetAll()
+    public Response<List<Customer>> GetAll()
     {
         using  var connection = dapperConText.Connection();
         var sql = "select * from Customers;";
         var res = connection.Query<Customer>(sql).ToList();
-        return res;
+        return new Response<List<Customer>>(res);
     }
 
-    public Customer GetById(int id)
+    public Response<Customer> GetById(int id)
     {
         using  var connection = dapperConText.Connection();
         var sql = "select * from Cars where CarId=@Id;";
         var res = connection.QuerySingle<Customer>(sql,new {Id=id});
-        return res;    
+        if (res == null)
+        {
+            return new Response<Customer>(HttpStatusCode.InternalServerError,"Student not found");
+        }
+        return new Response<Customer>(res);    
     }
-    public bool Update(Customer t)
+    public Response<bool> Update(Customer t)
     {
         using  var connection = dapperConText.Connection();
         var sql = "update Customers set fullname=@FullName, phone=@Phone, email=@Email where CustomerId=@Id;";
         var res = connection.Execute(sql,t);
-        return res > 0;    
+        if (res == 0)
+        {
+            return new Response<bool>(HttpStatusCode.InternalServerError,"Student not found");
+        }
+
+        return new Response<bool>(HttpStatusCode.Created, "Studnet successfully update");  
     }
 
-    public bool Delete(int id)
+    public Response<bool> Delete(int id)
     {
         using  var connection = dapperConText.Connection();
         var sql = "delete from Customers where CustomerId=@Id;";
         var res = connection.Execute(sql,new {Id=id});
-        return res > 0;
-        
+        if (res == 0)
+        {
+            return new Response<bool>(HttpStatusCode.InternalServerError,"Student not found");
+        }
+
+        return new Response<bool>(HttpStatusCode.Created, "Studnet successfully delete");
     }      
 }

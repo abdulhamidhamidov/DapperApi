@@ -1,4 +1,5 @@
-﻿using WebApiDapper.Models;
+﻿using WebApiDapper.ApiResponse;
+using WebApiDapper.Models;
 using WebApiDapper.Services;
 
 namespace WebApiDapper.Controllers;
@@ -11,13 +12,13 @@ using Microsoft.AspNetCore.Mvc;
 public class CustomerController(IAllServices<Customer> customerService) : ControllerBase
 {
     [HttpPost]
-    public bool Create(Customer customer) => customerService.Create(customer);
+    public Response<bool> Create(Customer customer) => customerService.Create(customer);
     [HttpGet]
-    public List<Customer> GetAll() => customerService.GetAll();
+    public Response<List<Customer>> GetAll() => customerService.GetAll();
     [HttpGet("/get-By-Id-customer")]
-    public Customer GetById(int id) =>customerService.GetById(id);
+    public Response<Customer> GetById(int id) =>customerService.GetById(id);
     [HttpPut]
-    public bool Update(Customer customer) => customerService.Update(customer);
+    public Response<bool> Update(Customer customer) => customerService.Update(customer);
     [HttpDelete]
-    public bool Delete(int id) => customerService.Delete(id);
+    public Response<bool> Delete(int id) => customerService.Delete(id);
 }

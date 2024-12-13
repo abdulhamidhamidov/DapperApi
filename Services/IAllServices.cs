@@ -1,10 +1,12 @@
-﻿namespace WebApiDapper.Services;
+﻿using WebApiDapper.ApiResponse;
+
+namespace WebApiDapper.Services;
 
 public interface IAllServices<T>
 {
-    bool Create(T t);
-    List<T> GetAll();
-    T GetById(int id);
-    bool Update(T t);
-    bool Delete(int id);
+    Response<bool> Create(T t);
+    Response<List<T>> GetAll();
+    Response<T> GetById(int id);
+    Response<bool> Update(T t);
+    Response<bool> Delete(int id);
 }

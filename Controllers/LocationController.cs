@@ -1,4 +1,5 @@
-﻿using WebApiDapper.Models;
+﻿using WebApiDapper.ApiResponse;
+using WebApiDapper.Models;
 using WebApiDapper.Services;
 
 namespace WebApiDapper.Controllers;
@@ -11,13 +12,13 @@ using Microsoft.AspNetCore.Mvc;
 public class LocationController(IAllServices<Location> locationService) : ControllerBase
 {
     [HttpPost]
-    public bool Create(Location location) => locationService.Create(location);
+    public Response<bool> Create(Location location) => locationService.Create(location);
     [HttpGet]
-    public List<Location> GetAll() => locationService.GetAll();
+    public Response<List<Location>> GetAll() => locationService.GetAll();
     [HttpGet("/get-By-Id-location")]
-    public Location GetById(int id) =>locationService.GetById(id);
+    public Response<Location> GetById(int id) =>locationService.GetById(id);
     [HttpPut]
-    public bool Update(Location location) => locationService.Update(location);
+    public Response<bool> Update(Location location) => locationService.Update(location);
     [HttpDelete]
-    public bool Delete(int id) => locationService.Delete(id);
+    public Response<bool> Delete(int id) => locationService.Delete(id);
 }
