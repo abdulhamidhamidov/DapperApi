@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CustomerController(CustomerService customerService) : ControllerBase
+public class CustomerController(IAllServices<Customer> customerService) : ControllerBase
 {
     [HttpPost]
     public bool Create(Customer customer) => customerService.Create(customer);

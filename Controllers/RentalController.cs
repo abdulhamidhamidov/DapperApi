@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
-public class RentalController(RetalService retalService) : ControllerBase
+public class RentalController(IAllServices<Rental> retalService) : ControllerBase
 {
     [HttpPost]
     public bool Create(Rental rental) => retalService.Create(rental);

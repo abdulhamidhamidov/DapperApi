@@ -5,12 +5,12 @@ using WebApiDapper.Services;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
-builder.Services.AddScoped<DapperConText>();
 builder.Services.AddScoped<IAllServices<Car>,CarServices>();
 builder.Services.AddScoped<IAllServices<Location>,LocationService>();
 builder.Services.AddScoped<IAllServices<Rental>,RetalService>();
 builder.Services.AddScoped<IAllServices<Customer>,CustomerService>();
 builder.Services.AddScoped<IAllServices<CarLocation>,CarLocationService>();
+builder.Services.AddScoped<DapperConText>();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

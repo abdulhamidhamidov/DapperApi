@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebApiDapper")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd85919085fed21f42684910bcf78d832760b602")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebApiDapper")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebApiDapper")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

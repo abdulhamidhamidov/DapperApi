@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CarLocationController(CarLocationService carLocationService) : ControllerBase
+public class CarLocationController(IAllServices<CarLocation> carLocationService) : ControllerBase
 {
     [HttpPost]
     public bool Create(CarLocation carLocation) => carLocationService.Create(carLocation);
@@ -21,3 +21,4 @@ public class CarLocationController(CarLocationService carLocationService) : Cont
     [HttpDelete]
     public bool Delete(int id) => carLocationService.Delete(id);
 }
+

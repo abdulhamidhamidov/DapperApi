@@ -36,3 +36,4 @@ C:\Users\ASUS\Desktop\ApiDapper\obj\Debug\net9.0\refint\WebApiDapper.dll
 C:\Users\ASUS\Desktop\ApiDapper\obj\Debug\net9.0\WebApiDapper.pdb
 C:\Users\ASUS\Desktop\ApiDapper\obj\Debug\net9.0\WebApiDapper.genruntimeconfig.cache
 C:\Users\ASUS\Desktop\ApiDapper\obj\Debug\net9.0\ref\WebApiDapper.dll
+C:\Users\ASUS\Desktop\ApiDapper\obj\Debug\net9.0\WebApiDapper.sourcelink.json

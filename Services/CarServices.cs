@@ -43,7 +43,7 @@ public class CarServices(DapperConText dapperConText):IAllServices<Car>
         using  var connection = dapperConText.Connection();
         var sql = "delete from Cars where CarId=@Id;";
         var res = connection.Execute(sql,new {Id=id});
-        return res > 0;
+        return res != 0;
         
     }   
 }

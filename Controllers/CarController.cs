@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CarController(CarServices carServices) : ControllerBase
+public class CarController(IAllServices<Car> carServices) : ControllerBase
 {
     [HttpPost]
     public bool Create(Car car) => carServices.Create(car);

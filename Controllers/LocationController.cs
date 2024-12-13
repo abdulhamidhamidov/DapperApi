@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
-public class LocationController(LocationService locationService) : ControllerBase
+public class LocationController(IAllServices<Location> locationService) : ControllerBase
 {
     [HttpPost]
     public bool Create(Location location) => locationService.Create(location);
